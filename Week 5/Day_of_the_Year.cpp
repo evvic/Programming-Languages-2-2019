@@ -21,7 +21,7 @@ public:
 
 	DayOfYear(int d) { day = d; };//constructor
 
-	void setDay(int day) { this->day = day; }; //'this' operator points to the day variable in´the class, not the one in the member function
+	void setDay(int day) { this->day = day; }; //'this' operator points to the day variable inÂ´the class, not the one in the member function
 	int getDay() { return day; };
 	void print(); //definition at bottom
 };
