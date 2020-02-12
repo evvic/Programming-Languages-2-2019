@@ -54,7 +54,7 @@ public:
 
 		return *this;
 	}
-	NumDays operator ++ (int) { //postfix increment operator §§§§ i++ cout << i++ << ++i
+	NumDays operator ++ (int) { //postfix increment operator Â§Â§Â§Â§ i++ cout << i++ << ++i
 		NumDays temp = *this;
 		++* this;
 
