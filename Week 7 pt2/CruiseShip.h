@@ -43,8 +43,7 @@ public:
 		return passengers;
 	}
 
-	void PrintShip() {
+	virtual void PrintShip() {
 		cout << getName() << ", " << passengers << " passengers";
 	}
 };
-

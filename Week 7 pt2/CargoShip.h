@@ -4,8 +4,7 @@
 
 using namespace std;
 
-class CargoShip :
-	public Ship
+class CargoShip : public Ship
 {
 private:
 	int capacity; //cargo capacity in tonnage
@@ -43,8 +42,7 @@ public:
 		return capacity;
 	}
 
-	void PrintShip() {
+	virtual void PrintShip() {
 		cout << getName() << ", " << capacity << " tonnage capacity";
 	}
 };
-

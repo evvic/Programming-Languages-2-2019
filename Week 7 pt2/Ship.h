@@ -41,8 +41,9 @@ public:
 		return year;
 	}
 
-	void PrintShip() {
+
+
+	virtual void PrintShip() { //virtual is like a templte
 		cout << name << ", " << year;
 	}
 };
-
