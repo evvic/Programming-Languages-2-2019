@@ -11,11 +11,11 @@ using namespace std;
 
 const int ships = 4;
 
-istream& operator>>(istream& stream, Ship& other)
+virtual istream& operator>>(istream& stream, Ship& other)
 {
 	string name, year;
 
-	
+
 	cout << "\nName: ";
 	cin >> name;
 	other.setName(name);
@@ -30,7 +30,7 @@ istream& operator>>(istream& stream, Ship& other)
 
 }
 
-istream& operator>>(istream& stream, CargoShip& other)
+virtual istream& operator>>(istream& stream, CargoShip& other)
 {
 	string name, year;
 
@@ -56,7 +56,7 @@ istream& operator>>(istream& stream, CargoShip& other)
 
 int main() {
 
-	Ship* butts[ships] = 
+	Ship* butts[ships] =
 	{
 		new Ship("Mayflower", "1620"),
 		new CruiseShip("Norweigan", "2003", 8000),
@@ -64,8 +64,10 @@ int main() {
 		new CruiseShip("Carnival", "1995", 6500)
 	};
 
+	//'virtual' is needed when calling printShip() so it compiles when it is called, not when built
+	//important for when overloading class functions when it gets messy like this (in an array of Ship pointers lol
 	for (int i = 0; i < ships; i++) {
-		butts[i]->PrintShip(); //HOW CAN I GET THIS TO CALL THE DERIVED NON-OVERIDDEN FUNCTION??? only calls Ship (base) class member function
+		butts[i]->PrintShip(); //MUST USE 'virtual' IN FUNCTION DEFINITION
 		cout << endl;
 	}
 
