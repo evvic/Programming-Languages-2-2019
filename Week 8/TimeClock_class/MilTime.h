@@ -20,8 +20,24 @@ private:
 	int milSeconds;
 public:
 	MilTime(int h, int s) {
-		milHours = h;
-		milSeconds = s;
+		try {
+			if (h > 2359) { throw 2359; }
+			else if (h < 0) { throw 0; }
+			milHours = h;
+		}
+		catch (int param) {
+			std::cout << "\nBadHour. Error number " << param;
+		}
+
+		try {
+			if (s > 59) { throw 59; }
+			else if (s < 0) { throw 0; }
+			milSeconds = s;
+		}
+		catch (int param) {
+			std::cout << "\nBadSeconds. Error number " << param;
+		}
+
 		convert();
 	}
 
@@ -57,8 +73,23 @@ public:
 	}
 
 	void setTime(int h, int s) {
-		milHours = h;
-		milSeconds = s;
+		try {
+			if (h > 2359) { throw 2359; }
+			else if (h < 0) { throw 0; }
+			milHours = h;
+		}
+		catch (int param) {
+			std::cout << "\nBadHour. Error number " << param;
+		}
+
+		try {
+			if (s > 59) { throw 59; }
+			else if (s < 0) { throw 0; }
+			milSeconds = s;
+		}
+		catch (int param) {
+			std::cout << "\nBadSeconds. Error number " << param;
+		}
 		convert(); //to regular time
 	}
 
