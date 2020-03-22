@@ -16,6 +16,13 @@ public:
 	}
 	Employee(string n, int i, int d) {
 		name = n;
+		try {
+			if (i > 9999) { throw 9999;}
+			if (i < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidEmployeeNumber. Error number " << param;
+		}
 		number = i;
 		date = d;
 	}
@@ -25,6 +32,13 @@ public:
 		name = n;
 	}
 	void setNumber(int n) {
+		try {
+			if (n > 9999) { throw 9999; }
+			if (n < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidEmployeeNumber. Error number " << param;
+		}
 		number = n;
 	}
 	void setName(int d) {
@@ -52,15 +66,50 @@ public:
 
 	//THIS WORKS!!!! TAKE NOTES FOR INITIALIZING BASE CLASS CONSTRUCTOR WITH DERIVED CLASS
 	ProductionWorker(int s, double r, string n, int i, double d) : Employee ( n,  i,  d) { 
+		//Exemption error if 0 > shift > 2
+		try {
+			if (s > 2) { throw 2; }
+			else if (s < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidShift. Error number " << param;
+		}
 		shift = s;
+
+		//Exeption error if rate is negative
+		try {
+			if (r < 0) {
+				throw 4;
+			}
+		}
+		catch (int param) {
+			cout << "\nInvalidPayRate. Error number " << param;
+		}
 		hourlyRate = r;
 	}
 	//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 	void setShift(int s) {
+		//Exemption error if 0 > shift > 2
+		try {
+			if (s > 2) { throw 2; }
+			else if (s < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidShift. Error number " << param;
+		}
 		shift = s;
 	}
 	void setRate(double r) {
+		//Exeption error if it's negative
+		try {
+			if (r < 0) {
+				throw 4;
+			}
+		}
+		catch (int param) {
+			cout << "\nInvalidPayRate. Error number " << param;
+		}
 		hourlyRate = r;
 	}
 
