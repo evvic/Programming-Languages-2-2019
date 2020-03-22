@@ -161,15 +161,69 @@ istream& operator>>(istream& stream, Date& other)
 {
 	int day, month, year;
 
+	//Set Day
+	do {
+		try {
+			//while loop catches incorrect datatypes
+			while (cout << "\nEnter the day: " && !(cin >> day)) {
+				cin.clear();
+				cin.ignore();
+				throw 'e';
+			}
+
+			if (day >= 31) { throw 31; }
+			else if (day < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidDay";
+			if (param > 15) {
+				cout << endl << "Day cannot be over " << param;
+			}
+			else cout << endl << "Day cannot be under " << param;
+		}
+		catch (char param) {
+			//This catches incorrect data types
+			cout << "\nInvalidDay";
+			cout << "\nDay variable must be an integer.";
+		}
+	} while (day < 1 || day > 31);
+
+	other.setDay(day);
+	
+
+	/*
 	do {
 		cout << "Enter the day: ";
 		cin >> day;
 	} while (day < 1 || day > 31);
 	other.setDay(day);
-
+	*/
+	
+	//Set Month
 	do {
-		cout << "Enter the month (1-12): ";
-		cin >> month;
+		try {
+			//while loop catches incorrect datatypes
+			while (cout << "\nEnter the month(1-12): " && !(cin >> month)) {
+				cin.clear();
+				cin.ignore();
+				throw 'e';
+			}
+
+			if (month >= 12) { throw 12; }
+			else if (month < 0) { throw 0; }
+		}
+		catch (int param) {
+			cout << "\nInvalidDay";
+			if (param > 6) {
+				cout << endl << "Month cannot be over " << param;
+			}
+			else cout << endl << "Month cannot be under " << param;
+		}
+		catch (char param) {
+			//This catches incorrect data types
+			cout << "\nInvalidMonth";
+			cout << "\nMonth variable must be an integer.";
+		}
 	} while (month < 1 || month > 12);
 	other.setMonth(month);
 
